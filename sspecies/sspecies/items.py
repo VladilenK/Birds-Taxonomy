@@ -8,3 +8,4 @@ import scrapy
 
 class SspeciesItem(scrapy.Item):
     name = scrapy.Field()
+    bname = scrapy.Field()

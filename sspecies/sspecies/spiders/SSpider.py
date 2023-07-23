@@ -16,9 +16,11 @@ class SspiderSpider(scrapy.Spider):
     def extractData(self, res):
         s = SspeciesItem()
         s['name'] = res.css('h1.firstHeading').css('span.mw-page-title-main::text').extract_first()
+        s['bname'] = res.css('span.binomial').css('i::text').extract_first()
         self.writeTxt(s)
 
-    def writeTxt(self, q):
+    def writeTxt(self, s):
         with codecs.open('data.txt', 'a+', 'utf-8') as f:
-            f.write(q['name'] + '\r\n')
+            f.write(s['name'] + '\r\n')
+            f.write(s['bname'] + '\r\n')
 
